@@ -1,0 +1,91 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  background-color: #294C60;
+  font-size: 16px;
+}
+
+.site-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001B2E;
+  height: 36px;
+  padding: 8px 16px;
+  z-index: 1;
+}
+
+.header-title {
+  color: rgb(245, 245, 245);
+  margin: 0px;
+  font-family: "Libre Baskerville";
+  font-size: 1.7rem;
+}
+
+.menu-button {
+  height: 24px;
+  width: 24px;
+  border: 0px;
+  padding: 0px;
+  background-image: url(./images/menu.png);
+  background-size: contain;
+  background-color: #001B2E;
+  transition: 200ms;
+}
+
+.menu-button.clicked {
+  animation-name: pressDown;
+  animation-duration: 150ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes pressDown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.option-bar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  z-index: 0;
+}
+
+
+.option-bar.animate {
+  animation-name: slideDown;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-28px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.option-button {
+  flex: 1;
+  border: 0px;
+  background-color: #FFC49B;
+  font-weight: bold;
+  font-family: "Dosis";
+  font-size: 1.4rem;
+}
+
+.option-button.clicked {
+  background-color: #fcb481;
+}
+
+.inactive {
+  display: none;
+}
