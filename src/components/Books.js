@@ -1,22 +1,53 @@
 import React, { useState } from 'react';
+import Form from './Form';
 
-function Books() {
-  const [books, setBooks] = useState([]);
+function Book() {
+  const [BookList, setBookList] = useState([]);
+  const [book, setBook] = useState({
+    title: "",
+    author: "",
+    publishDate: "",
+    pages: 0,
+    rating: 0,
+  });
 
-  const addBook = book => {
-    const newBooks = [...books];
-    newBooks.push(book);
-    setBooks(newBooks);
+  const addBook = () => {
+    const newBookList = [...BookList];
+    newBookList.push(book);
+    setBookList(newBookList);
   };
 
-  const bookItems = books.map(item => {
-    return <li>{item}</li>
+  const clearBook = () => {
+      setBook({
+        title: "",
+        author: "",
+        publishDate: "",
+        pages: 0,
+        rating: 0,
+      })
+  }
+
+  const bookItems = BookList.map(item => {
+    return (
+      <ul>
+        <li>{item.title}</li>
+        <li>{item.author}</li>
+        <li>{item.pages}</li>
+      </ul>
+    )
   });
 
   return (
     <div>
+      <Form 
+      book={book} 
+      setBook={setBook}  
+      addBook={addBook} 
+      clearBook={clearBook} 
+      />
+      {bookItems}
     </div>
   );
 }
 
-export default Books;
+export default Book;
