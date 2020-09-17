@@ -4,6 +4,11 @@ html, body {
   height: 100%;
   background-color: #294C60;
   font-size: 16px;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 .site-header {
@@ -84,6 +89,42 @@ html, body {
 
 .option-button.clicked {
   background-color: #fcb481;
+}
+
+.form-wrapper {
+  width: 100%;
+  padding: 20px;
+  margin-top: 32px;
+  color: white;
+  font-family: "Dosis";
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper input {
+  width: 100%;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 4px;
+  padding: 8px;
+  margin: 4px 0px 16px;
+  font-size: 1rem;
+}
+
+.submit-button {
+  border: 0px;
+  border-radius: 4px;
+  padding: 4px 24px;
+  background-color: #FFEFD3;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: "Dosis";
+  margin-top: 16px;
+  align-self: flex-start;
 }
 
 .inactive {

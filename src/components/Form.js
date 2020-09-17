@@ -17,8 +17,8 @@ function Form(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form-wrapper">
+      <form className="add-book-form" onSubmit={handleSubmit}>
         <label>
           Title
           <br />
@@ -47,13 +47,13 @@ function Form(props) {
           <input
             type="number"
             name="pages"
-            min="0"
+            min="1"
             value={props.book.pages}
             onChange={handleChange}
           />
         </label><br />
 
-        <button>Add</button>
+        <button className="submit-button">Add</button>
       </form>
     </div>
   );

@@ -7,7 +7,7 @@ function Book() {
     title: "",
     author: "",
     publishDate: "",
-    pages: 0,
+    pages: 1,
     rating: 0,
   });
 
@@ -22,7 +22,7 @@ function Book() {
         title: "",
         author: "",
         publishDate: "",
-        pages: 0,
+        pages: 1,
         rating: 0,
       })
   }
@@ -38,7 +38,7 @@ function Book() {
   });
 
   return (
-    <div>
+    <div className="books-wrapper">
       <Form 
       book={book} 
       setBook={setBook}  
