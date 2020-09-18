@@ -12,12 +12,15 @@ function Form(props) {
   const handleSubmit = event => {
     event.preventDefault();
     
+    props.setId();
     props.addBook();
     props.clearBook();
   }
 
   return (
-    <div className="form-wrapper">
+    <div className="form-wrapper inactive">
+      <h1 className="form-title">Add Book</h1>
+
       <form className="add-book-form" onSubmit={handleSubmit}>
         <label>
           Title

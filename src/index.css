@@ -17,7 +17,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   background-color: #001B2E;
-  height: 36px;
+  height: 44px;
   padding: 8px 16px;
   z-index: 1;
 }
@@ -26,7 +26,7 @@ html, body {
   color: rgb(245, 245, 245);
   margin: 0px;
   font-family: "Libre Baskerville";
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .menu-button {
@@ -81,23 +81,40 @@ html, body {
 .option-button {
   flex: 1;
   border: 0px;
-  background-color: #FFC49B;
+  background-color: #ADB6C4;
   font-weight: bold;
   font-family: "Dosis";
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  color: white;
 }
 
 .option-button.clicked {
   background-color: #fcb481;
+  color: black;
+}
+
+.books-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
 }
 
 .form-wrapper {
-  width: 100%;
+  width: 90%;
   padding: 20px;
-  margin-top: 32px;
+  margin-bottom: 20px;
   color: white;
   font-family: "Dosis";
   font-size: 1.2rem;
+  border: 2px #FFEFD3 solid;
+}
+
+.form-title {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 12px;
   font-weight: bold;
 }
 
@@ -118,13 +135,58 @@ html, body {
 .submit-button {
   border: 0px;
   border-radius: 4px;
-  padding: 4px 24px;
+  padding: 4px 18px;
   background-color: #FFEFD3;
   font-weight: bold;
   font-size: 1.2rem;
   font-family: "Dosis";
   margin-top: 16px;
   align-self: flex-start;
+}
+
+.books-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.books-list {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border: 2px solid #FFEFD3;
+  font-family: "Dosis";
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+.books-list  li {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.397);
+  margin: 8px;
+}
+
+.remove-button { 
+  border: 2px solid rgb(240, 72, 94);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: "Dosis";
+  width: 24px;
+  height: 24px;
+  background-image: url(./images/close.png);
+  background-position: center;
+  background-size: contain;
+  box-shadow: 1px 1px 3px #001B2E;
+  background-color: #294C60;
+  align-self: flex-end;
+  transition: 200ms;
+  margin-top: 8px;
+  margin-right: 4px;
+}
+
+.remove-button:hover {
+  background-color: rgb(240, 72, 94);
 }
 
 .inactive {

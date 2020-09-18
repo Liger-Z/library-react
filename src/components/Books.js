@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from './Form';
 
-function Book() {
+function Books() {
   const [BookList, setBookList] = useState([]);
   const [book, setBook] = useState({
     title: "",
@@ -9,31 +9,54 @@ function Book() {
     publishDate: "",
     pages: 1,
     rating: 0,
+    id: "",
   });
+  //setState is async so need to figure out how to setId before adding book
+  const setId = () => {
+    const id = `${book.title} ${Math.floor((Math.random() * 1000)).toString()}`;
+    setBook(prevState => {
+      console.log(id)
+      return {...prevState, id: id};
+    });
+  }
 
   const addBook = () => {
     const newBookList = [...BookList];
     newBookList.push(book);
     setBookList(newBookList);
+    console.log(newBookList)
   };
 
   const clearBook = () => {
-      setBook({
-        title: "",
-        author: "",
-        publishDate: "",
-        pages: 1,
-        rating: 0,
+      setBook(prevState => {
+          return {
+          title: "",
+          author: "",
+          publishDate: "",
+          pages: 1,
+          rating: 0,
+          id: "",
+        }
       })
   }
 
+  const removeBook = event => {
+    const target = event.target;
+    console.log(target)
+  }
+
+
   const bookItems = BookList.map(item => {
     return (
-      <ul>
-        <li>{item.title}</li>
-        <li>{item.author}</li>
-        <li>{item.pages}</li>
-      </ul>
+      <div className="books-list" key={item.id}>
+        <ul>
+          <li>Title: {item.title}</li>
+          <li>Author: {item.author}</li>
+          <li>Pages: {item.pages}</li>
+        </ul>
+
+        <button className="remove-button" data-id={item.id} alt="remove button" onClick={removeBook}></button>
+      </div>
     )
   });
 
@@ -44,10 +67,14 @@ function Book() {
       setBook={setBook}  
       addBook={addBook} 
       clearBook={clearBook} 
+      setId={setId}
       />
-      {bookItems}
+
+      <div className="books-list-wrapper">
+        {bookItems}
+      </div>
     </div>
   );
 }
 
-export default Book;
+export default Books;
