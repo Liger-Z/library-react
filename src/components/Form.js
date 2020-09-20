@@ -11,8 +11,7 @@ function Form(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    
-    props.setId();
+
     props.addBook();
     props.clearBook();
   }

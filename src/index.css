@@ -125,24 +125,53 @@ html, body {
 
 .form-wrapper input {
   width: 100%;
-  border: 2px solid rgb(112, 112, 112);
-  border-radius: 4px;
+  border: 0px;
+  border-bottom: 2px solid #FFEFD3;
+  background-color:#294C60;
+  color: white;
   padding: 8px;
   margin: 4px 0px 16px;
   font-size: 1rem;
 }
 
+.form-wrapper input:focus {
+  outline: 0;
+  border-bottom: 2px solid #fcb481;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .submit-button {
-  border: 0px;
+  border: 2px solid #FFEFD3;
   border-radius: 4px;
   padding: 4px 18px;
-  background-color: #FFEFD3;
+  background-color: #294C60;
+  color: white;
   font-weight: bold;
   font-size: 1.2rem;
   font-family: "Dosis";
   margin-top: 16px;
   align-self: flex-start;
+  transition: 200ms;
 }
+
+.submit-button:focus {
+  outline: 0;
+  border: 2px solid #fcb481;
+}
+
+.submit-button:hover {
+  background-color: #FFEFD3;
+  color: black;
+}
+
 
 .books-list-wrapper {
   display: flex;
@@ -180,12 +209,17 @@ html, body {
   box-shadow: 1px 1px 3px #001B2E;
   background-color: #294C60;
   align-self: flex-end;
-  transition: 200ms;
   margin-top: 8px;
   margin-right: 4px;
+  transition: 200ms;
 }
 
 .remove-button:hover {
+  background-color: rgb(240, 72, 94);
+}
+
+.remove-button:focus {
+  outline: none;
   background-color: rgb(240, 72, 94);
 }
 
