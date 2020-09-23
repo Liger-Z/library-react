@@ -5,7 +5,7 @@ function Form(props) {
     const target = event.target;
     
     props.setBook(prevState => {
-      return {...prevState, [target.name]: target.value}
+      return {...prevState, [target.name]: target.name === "completed" ? !prevState.completed : target.value}
     })
   }
 
@@ -29,6 +29,7 @@ function Form(props) {
             name="title"
             value={props.book.title}
             onChange={handleChange}
+            required
           />
         </label><br />
 
@@ -40,6 +41,7 @@ function Form(props) {
             name="author"
             value={props.book.author}
             onChange={handleChange}
+            required
           />
         </label><br />
 
@@ -52,8 +54,19 @@ function Form(props) {
             min="1"
             value={props.book.pages}
             onChange={handleChange}
+            required
           />
         </label><br />
+
+        <label className="form-checkbox">
+          Completed
+          <input
+            type="checkbox"
+            name="completed"
+            value={props.book.completed}
+            onChange={handleChange}
+          />
+        </label>
 
         <button className="submit-button">Add</button>
       </form>

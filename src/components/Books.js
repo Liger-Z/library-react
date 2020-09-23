@@ -2,62 +2,94 @@ import React, { useState } from 'react';
 import Form from './Form';
 
 function Books() {
-  const [BookList, setBookList] = useState([]);
+  //TODO: Add Read status functionality
+
+  const [bookList, setBookList] = useState([]);
   const [book, setBook] = useState({
     title: "",
     author: "",
-    publishDate: "",
     pages: 1,
-    rating: 0,
-    id: "",
+    completed: false,
   });
-  //setState is async so need to figure out how to setId before adding book
-  const setId = () => {
-    const id = `${book.title} ${Math.floor((Math.random() * 1000)).toString()}`;
-    setBook(prevState => {
-      console.log(id)
-      return {...prevState, id: id};
-    });
-  }
 
-  const addBook = () => {
-    const newBookList = [...BookList];
+  function addBook() {
+    const newBookList = [...bookList];
     newBookList.push(book);
+    console.log(newBookList);
     setBookList(newBookList);
-    console.log(newBookList)
   };
 
-  const clearBook = () => {
+  function clearBook() {
       setBook(prevState => {
           return {
           title: "",
           author: "",
-          publishDate: "",
           pages: 1,
-          rating: 0,
-          id: "",
+          completed: false,
         }
-      })
-  }
+      });
+  };
 
-  const removeBook = event => {
+  function findBookIndex(event) {
     const target = event.target;
-    console.log(target)
+    const bookTitle = (target.parentNode.parentNode.attributes[1].nodeValue);
+    const bookAuthor = (target.parentNode.parentNode.attributes[2].nodeValue);
+    const bookPages = (target.parentNode.parentNode.attributes[3].nodeValue)
+    const index = bookList.findIndex(item => {
+      return item.title === bookTitle && item.author === bookAuthor && item.pages === bookPages;
+    });
+
+    return index;
   }
 
+  function removeBook(event) {
+    const index = findBookIndex(event);
 
-  const bookItems = BookList.map(item => {
+    let newBookList = [...bookList];
+    newBookList.splice(index, 1);
+    setBookList(newBookList);
+  };
+
+  function toggleCompleted(event) {
+    const index = findBookIndex(event);
+    const book = bookList[index];
+    const newBook = { ...book, completed: !book.completed };
+    const newBookList = [ ...bookList ];
+    newBookList[index] = newBook;
+    
+    setBookList(newBookList);
+  };
+
+  const bookItems = bookList.map(item => {
     return (
-      <div className="books-list" key={item.id}>
+      <div 
+      className={item.completed ? "book-list-wrapper completed" : "book-list-wrapper"} 
+      attribute-title={item.title}
+      attribute-author={item.author}
+      attribute-pages={item.pages} 
+      key={`${item.title} ${Math.floor(Math.random * 99999999)}`}
+      >
         <ul>
           <li>Title: {item.title}</li>
           <li>Author: {item.author}</li>
           <li>Pages: {item.pages}</li>
         </ul>
 
-        <button className="remove-button" data-id={item.id} alt="remove button" onClick={removeBook}></button>
+        <div className="book-button-wrapper">
+          <button 
+          className={item.completed ? "completed-button completed" : "completed-button"} 
+          onClick={toggleCompleted}>
+            {item.completed ? "Read" : "Unread"}
+          </button>
+
+          <button 
+          className="remove-button" 
+          alt="remove button" 
+          onClick={removeBook}>
+          </button>
+        </div>
       </div>
-    )
+    );
   });
 
   return (
@@ -67,14 +99,11 @@ function Books() {
       setBook={setBook}  
       addBook={addBook} 
       clearBook={clearBook} 
-      setId={setId}
       />
 
-      <div className="books-list-wrapper">
-        {bookItems}
-      </div>
+     {bookItems}
     </div>
   );
-}
+};
 
 export default Books;

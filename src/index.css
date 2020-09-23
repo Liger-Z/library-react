@@ -62,7 +62,6 @@ html, body {
   z-index: 0;
 }
 
-
 .option-bar.animate {
   animation-name: slideDown;
   animation-duration: 300ms;
@@ -86,6 +85,12 @@ html, body {
   font-family: "Dosis";
   font-size: 1.3rem;
   color: white;
+}
+
+.option-button:focus {
+  outline: none;
+  background-color: #fcb481;
+  color: black;
 }
 
 .option-button.clicked {
@@ -139,6 +144,16 @@ html, body {
   border-bottom: 2px solid #fcb481;
 }
 
+.form-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.form-checkbox input {
+  margin-left: 12px;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -172,14 +187,7 @@ input[type="number"] {
   color: black;
 }
 
-
-.books-list-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-}
-
-.books-list {
+.book-list-wrapper {
   display: flex;
   flex-direction: column;
   color: white;
@@ -188,11 +196,46 @@ input[type="number"] {
   font-size: 1.2rem;
   margin-bottom: 16px;
   padding: 8px;
+  width: 90%
 }
 
-.books-list  li {
+.book-list-wrapper.completed {
+  border: 2px solid #fcb481;
+}
+
+.book-list-wrapper  li {
   border-bottom: 2px solid rgba(255, 255, 255, 0.397);
   margin: 8px;
+}
+.book-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0px 4px;
+  padding: 8px;
+}
+
+.completed-button {
+  border: 2px solid #FFEFD3;
+  border-radius: 4px;
+  background-color: #294C60;
+  padding: 4px 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.completed-button:focus {
+  outline: 0;
+  border: 2px solid #fcb481;
+}
+
+.completed-button.completed {
+  border: 2px solid #fcb481;
+}
+
+.completed-button.completed:focus {
+  outline: 0;
+  border: 2px solid #FFEFD3;
 }
 
 .remove-button { 
@@ -208,9 +251,6 @@ input[type="number"] {
   background-size: contain;
   box-shadow: 1px 1px 3px #001B2E;
   background-color: #294C60;
-  align-self: flex-end;
-  margin-top: 8px;
-  margin-right: 4px;
   transition: 200ms;
 }
 

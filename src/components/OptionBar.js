@@ -1,7 +1,7 @@
 import React from 'react';
-import AddBook from './AddBook';
-import FilterBook from './FilterBook';
-import SortBook from './SortBook';
+import AddTab from './AddTab';
+import FilterTab from './FilterTab';
+import SortTab from './SortTab';
 
 function OptionBar() {
   const toggleClassClicked = event => {
@@ -11,9 +11,9 @@ function OptionBar() {
 
   return (
     <div className="option-bar inactive">
-      <AddBook toggleClassClicked={toggleClassClicked}/>
-      <FilterBook toggleClassClicked={toggleClassClicked}/>
-      <SortBook toggleClassClicked={toggleClassClicked}/>
+      <AddTab toggleClassClicked={toggleClassClicked}/>
+      <FilterTab toggleClassClicked={toggleClassClicked}/>
+      <SortTab toggleClassClicked={toggleClassClicked}/>
     </div>
   )
 }
